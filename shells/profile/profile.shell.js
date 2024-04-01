@@ -9,6 +9,9 @@ import {
   map,
   unsafeStatic,
 } from "https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js";
+import Collapse from "./collapse.util.js";
+
+customElements.define("pb-shell-collapse", Collapse);
 
 const pluginMap = new Map();
 
@@ -50,7 +53,7 @@ const baseStyleSheet = css`
       font-size: 2em;
     }
 
-    & [part~="section"] {  
+    & [part~="section"] {
       & [part~="view"] {
         margin: 10px 0;
         padding: 10px;
@@ -95,29 +98,33 @@ export default class PageBuilderHost extends LitElement {
               <h1>${section?.title}</h1>
               ${map(section?.views, (view) => {
                 const tagName = this.#getViewElementTagName(view?.viewSrc);
-                return html`
-                  <div part="view">
-                    <h2>${view?.title}</h2>
-                    ${when(
-                      customElements.get(tagName),
-                      () => staticHtml/* html */ `
-                      <${unsafeStatic(tagName)} 
-                        ${ref((el) => {
-                          if (!el) {
-                            return;
-                          }
-                          Object.assign(el, view?.viewProps);
-                        })}
-                      />
-                 `
-                    )}
-                  </div>
-                `;
+                return this.#renderView(view, tagName);
               })}
             </div>
           `
       )}
     </div>`;
+  }
+
+  #renderView(view, tagName) {
+    return html`
+      <pb-shell-collapse part="view" ?expanded=${!view?.collapsed}>
+        <h2 slot="header">${view?.title}</h2>
+        ${when(
+          customElements.get(tagName),
+          () => staticHtml/* html */ `
+              <${unsafeStatic(tagName)} 
+                ${ref((el) => {
+                  if (!el) {
+                    return;
+                  }
+                  Object.assign(el, view?.viewProps);
+                })}
+              />
+          `
+        )}
+      </pb-shell-collapse>
+    `;
   }
 
   #getViewElementTagName(src) {
