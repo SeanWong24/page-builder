@@ -1,0 +1,19 @@
+:host {
+  padding: 10px;
+  background-color: azure;
+}
+
+[part~="sections"] {
+  & h1 {
+    font-size: 2em;
+  }
+
+  & [part~="section"] {
+    margin: 0 auto;
+    max-width: 600px;
+
+    & [part~="view"] {
+      background-color: lightblue;
+    }
+  }
+}

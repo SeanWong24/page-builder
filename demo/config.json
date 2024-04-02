@@ -1,0 +1,112 @@
+{
+  "faviconSrc": "https://picsum.photos/200",
+  "pageTitle": "Example Profile",
+  "shellSrc": "./shells/profile/profile.shell.js",
+  "themeSrc": "./demo/theme.css",
+  "shellProps": {
+    "info": {
+      "imageSrc": "https://picsum.photos/200",
+      "title": "Title",
+      "firstName": "First",
+      "middleName": "Middle",
+      "lastName": "Last",
+      "tel": "123-456-7890",
+      "email": "foo@bar.baz",
+      "slogan": "Slogan~~~~~~~~~~"
+    },
+    "sections": [
+      {
+        "title": "Intro",
+        "views": [
+          {
+            "title": "Hello World",
+            "collapsed": true,
+            "viewSrc": "./views/react-large-text.view.js",
+            "viewProps": {
+              "content": "Hello World!"
+            }
+          }
+        ]
+      },
+      {
+        "title": "History",
+        "views": [
+          {
+            "title": "Jan. 2019 - May. 2021",
+            "viewSrc": "./views/markdown.view.js",
+            "viewProps": {
+              "content": "### Foo bar baz\n - Blah blah blah\n - Blah blah blah\n - Blah blah blah"
+            }
+          },
+          {
+            "title": "May. 2021 - Sep. 2023",
+            "viewSrc": "./views/markdown.view.js",
+            "viewProps": {
+              "content": "### Foo bar baz\n - Blah blah blah\n - Blah blah blah\n - Blah blah blah"
+            }
+          },
+          {
+            "title": "Sep. 2023 - present",
+            "viewSrc": "./views/markdown.view.js",
+            "viewProps": {
+              "content": "### Foo bar baz\n - Blah blah blah\n - Blah blah blah\n - Blah blah blah"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Something Else",
+        "views": [
+          {
+            "title": "Sample Code",
+            "viewSrc": "./views/code.view.js",
+            "viewProps": {
+              "value": "const a = () => 2; \nconst b = () => 3; \nconst add = (x: number, y: number) => x + y; \nconsole.log(add(a(), b()));",
+              "language": "typescript"
+            }
+          },
+          {
+            "title": "Item List",
+            "viewSrc": "./views/gallery.view.js",
+            "viewProps": {
+              "items": [
+                {
+                  "title": "Foo",
+                  "imageSrc": "https://picsum.photos/seed/1/200",
+                  "href": "https://picsum.photos/seed/1/800"
+                },
+                {
+                  "title": "Bar",
+                  "imageSrc": "https://picsum.photos/seed/2/200",
+                  "href": "https://picsum.photos/seed/2/800"
+                },
+                {
+                  "title": "Baz",
+                  "imageSrc": "https://picsum.photos/seed/3/200",
+                  "href": "https://picsum.photos/seed/3/800"
+                },
+                {
+                  "title": "Qux",
+                  "imageSrc": "https://picsum.photos/seed/4/200",
+                  "href": "https://picsum.photos/seed/4/800"
+                },
+                {
+                  "title": "Quux",
+                  "imageSrc": "https://picsum.photos/seed/5/200",
+                  "href": "https://picsum.photos/seed/5/800"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Embedded Page",
+            "viewSrc": "./views/embed.view.js",
+            "viewProps": {
+              "src": "https://bing.com"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
