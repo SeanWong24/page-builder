@@ -64,7 +64,7 @@ const baseStyleSheet = css`
   }
 `.styleSheet;
 
-export default class PageBuilderHost extends LitElement {
+export default class ProfileShell extends LitElement {
   static properties = {
     shellProps: { type: Object },
     themeSrc: { type: String, attribute: "theme-src" },
