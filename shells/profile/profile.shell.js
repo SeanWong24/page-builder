@@ -133,7 +133,7 @@ export default class ProfileShell extends LitElement {
       tagName = `pb-view-${pluginMap.size}`;
       pluginMap.set(src, tagName);
       try {
-        import(src).then((module) => {
+        import(new URL(src, document.baseURI)).then((module) => {
           customElements.define(tagName, module.default);
           customElements.whenDefined(tagName).then(() => {
             this.requestUpdate();
@@ -195,8 +195,8 @@ export default class ProfileShell extends LitElement {
 
   async #loadTheme() {
     try {
-      const theme = await fetch(this.themeSrc).then((response) =>
-        response.text()
+      const theme = await fetch(new URL(this.themeSrc, document.baseURI)).then(
+        (response) => response.text()
       );
       this.#updateDynamicStyleSheets([unsafeCSS(theme).styleSheet]);
     } catch {}

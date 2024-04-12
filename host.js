@@ -1,4 +1,8 @@
-import { css, html, LitElement } from "https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js";
+import {
+  css,
+  html,
+  LitElement,
+} from "https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js";
 
 export class PageBuilderHost extends LitElement {
   static styles = css`
@@ -36,9 +40,9 @@ export class PageBuilderHost extends LitElement {
 
   async #loadConfig() {
     try {
-      this._config = await fetch(this.configSrc).then((response) =>
-        response.json()
-      );
+      this._config = await fetch(
+        new URL(this.configSrc, document.baseURI)
+      ).then((response) => response.json());
       this.#updateFavicon();
       this.#updatePageTitle();
       this.#defineShellElement();

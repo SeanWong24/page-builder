@@ -1,4 +1,4 @@
-import "https://unpkg.com/@hey-web-components/monaco-editor";
+import "https://esm.run/@hey-web-components/monaco-editor";
 
 export default class Code extends HTMLElement {
   constructor() {

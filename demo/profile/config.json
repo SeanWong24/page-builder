@@ -2,7 +2,7 @@
   "faviconSrc": "https://picsum.photos/200",
   "pageTitle": "Example Profile",
   "shellSrc": "./shells/profile/profile.shell.js",
-  "themeSrc": "./demo/theme.css",
+  "themeSrc": "./demo/profile/theme.css",
   "shellProps": {
     "info": {
       "imageSrc": "https://picsum.photos/200",
@@ -21,7 +21,7 @@
           {
             "title": "Hello World",
             "collapsed": true,
-            "viewSrc": "./views/react-large-text.view.js",
+            "viewSrc": "./shells/profile/views/react-large-text.view.js",
             "viewProps": {
               "content": "Hello World!"
             }
@@ -33,21 +33,21 @@
         "views": [
           {
             "title": "Jan. 2019 - May. 2021",
-            "viewSrc": "./views/markdown.view.js",
+            "viewSrc": "./shells/profile/views/markdown.view.js",
             "viewProps": {
               "content": "### Foo bar baz\n - Blah blah blah\n - Blah blah blah\n - Blah blah blah"
             }
           },
           {
             "title": "May. 2021 - Sep. 2023",
-            "viewSrc": "./views/markdown.view.js",
+            "viewSrc": "./shells/profile/views/markdown.view.js",
             "viewProps": {
               "content": "### Foo bar baz\n - Blah blah blah\n - Blah blah blah\n - Blah blah blah"
             }
           },
           {
             "title": "Sep. 2023 - present",
-            "viewSrc": "./views/markdown.view.js",
+            "viewSrc": "./shells/profile/views/markdown.view.js",
             "viewProps": {
               "content": "### Foo bar baz\n - Blah blah blah\n - Blah blah blah\n - Blah blah blah"
             }
@@ -59,7 +59,7 @@
         "views": [
           {
             "title": "Sample Code",
-            "viewSrc": "./views/code.view.js",
+            "viewSrc": "./shells/profile/views/code.view.js",
             "viewProps": {
               "value": "const a = () => 2; \nconst b = () => 3; \nconst add = (x: number, y: number) => x + y; \nconsole.log(add(a(), b()));",
               "language": "typescript"
@@ -67,7 +67,7 @@
           },
           {
             "title": "Item List",
-            "viewSrc": "./views/gallery.view.js",
+            "viewSrc": "./shells/profile/views/gallery.view.js",
             "viewProps": {
               "items": [
                 {
@@ -100,7 +100,7 @@
           },
           {
             "title": "Embedded Page",
-            "viewSrc": "./views/embed.view.js",
+            "viewSrc": "./shells/profile/views/embed.view.js",
             "viewProps": {
               "src": "https://bing.com"
             }

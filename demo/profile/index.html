@@ -8,7 +8,7 @@
     <title>Page Builder</title>
     <script
       type="module"
-      src="https://unpkg.com/@hey-web-components/monaco-editor"
+      src="https://esm.run/@hey-web-components/monaco-editor"
     ></script>
   </head>
 
@@ -72,7 +72,8 @@
       function updateJSONConfig() {
         const viewer = document.querySelector("iframe");
         viewer.src =
-          "./index.html?configSrc=" + generateBlobUrlFromText(jsonEditor.value);
+          "../../index.html?configSrc=" +
+          generateBlobUrlFromText(jsonEditor.value);
       }
 
       function updateCSSTheme() {
@@ -101,12 +102,12 @@
       });
 
       async function loadDefaultEditorValues() {
-        jsonEditor.value = await fetch("./demo/config.json").then((response) =>
-          response.text()
-        );
-        cssEditor.value = await fetch("./demo/theme.css").then((response) =>
-          response.text()
-        );
+        jsonEditor.value = await fetch(
+          new URL("./config.json", document.baseURI)
+        ).then((response) => response.text());
+        cssEditor.value = await fetch(
+          new URL("./theme.css", document.baseURI)
+        ).then((response) => response.text());
         updateJSONConfig();
         updateCSSTheme();
       }
