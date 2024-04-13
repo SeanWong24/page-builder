@@ -1,0 +1,67 @@
+{
+  "faviconSrc": "https://picsum.photos/200",
+  "pageTitle": "Foo",
+  "shellSrc": "./shells/plain.shell.js",
+  "themeSrc": "./demo/plain/theme.css",
+  "shellProps": {
+    "views": [
+      {
+        "viewSrc": "./views/header.view.js",
+        "viewProps": {
+          "className": "header",
+          "logoSrc": "https://picsum.photos/200",
+          "title": "Foo",
+          "links": [
+            {
+              "href": "javascript:alert('It will not work.')",
+              "content": "Link 1"
+            },
+            {
+              "href": "javascript:alert('It will not work.')",
+              "content": "Link 2"
+            },
+            {
+              "href": "javascript:alert('It will not work.')",
+              "content": "Link 3"
+            }
+          ]
+        }
+      },
+      {
+        "viewSrc": "./views/carousel.view.js",
+        "viewProps": {
+          "className": "carousel",
+          "timeout": 3,
+          "imageSrcs": [
+            "https://picsum.photos/seed/1/800/600",
+            "https://picsum.photos/seed/2/800/600",
+            "https://picsum.photos/seed/3/800/600",
+            "https://picsum.photos/seed/4/800/600",
+            "https://picsum.photos/seed/5/800/600"
+          ]
+        }
+      },
+      {
+        "viewSrc": "./views/markdown.view.js",
+        "viewProps": {
+          "className": "alert alert-info",
+          "content": "This is an alert."
+        }
+      },
+      {
+        "viewSrc": "./views/markdown.view.js",
+        "viewProps": {
+          "className": "alert alert-warning",
+          "content": "## Announcements\n* Something here.\n* Something else.\n* Something more."
+        }
+      },
+      {
+        "viewSrc": "./views/footer.view.js",
+        "viewProps": {
+          "className": "footer",
+          "content": "This is footer."
+        }
+      }
+    ]
+  }
+}

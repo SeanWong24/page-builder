@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+
+[part~="view"] {
+  &:not(.header, .footer) {
+    max-width: 800px;
+    margin: 10px auto;
+  }
+}
+
+.header {
+  background-color: azure;
+  width: 100vw;
+}
+
+.footer {
+  background-color: gray;
+}
+
+.link::part(link) {
+  color: black;
+}
+
+.carousel::part(slide) {
+  object-fit: fill;
+}
+
+.alert {
+  border: 1px solid rgba(125, 125, 125, 0.5);
+  border-radius: 10px;
+  min-height: fit-content;
+
+  &.alert-info {
+    background-color: lightblue;
+  }
+
+  &.alert-warning {
+    background-color: lightyellow;
+  }
+}

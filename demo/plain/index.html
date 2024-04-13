@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="./" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" />
+    <title>Page Builder</title>
+    <script
+      type="module"
+      src="https://esm.run/@hey-web-components/monaco-editor"
+    ></script>
+  </head>
+
+  <body>
+    <div id="main-container">
+      <hey-monaco-editor language="json"></hey-monaco-editor>
+      <hey-monaco-editor language="css"></hey-monaco-editor>
+      <div id="css-url-display"></div>
+      <iframe frameborder="0"></iframe>
+    </div>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      #main-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr auto;
+        gap: 10px;
+        padding: 10px;
+        position: fixed;
+        inset: 0;
+
+        & > * {
+          height: 100%;
+          width: 100%;
+          border-radius: 10px;
+          box-shadow: 2px 2px 5px 0 hsl(0, 0%, 0%, 0.5);
+          overflow: hidden;
+        }
+
+        & > hey-monaco-editor[language="json"] {
+          grid-column: 1 / 1;
+          grid-row: 1 / 1;
+        }
+
+        & > hey-monaco-editor[language="css"] {
+          grid-column: 1 / 1;
+          grid-row: 2 / 2;
+        }
+
+        & > div {
+          padding: 5px;
+          grid-column: 1 / 1;
+          grid-row: 3 / 3;
+        }
+
+        & > iframe {
+          grid-row: 1 / 4;
+        }
+      }
+    </style>
+    <script defer>
+      function generateBlobUrlFromText(text) {
+        return URL.createObjectURL(
+          new Blob([text], { type: "application/json" })
+        );
+      }
+
+      function updateJSONConfig() {
+        const viewer = document.querySelector("iframe");
+        viewer.src =
+          "../../index.html?configSrc=" +
+          generateBlobUrlFromText(jsonEditor.value);
+      }
+
+      function updateCSSTheme() {
+        const cssUrlDisplay = document.querySelector("#css-url-display");
+        cssUrlDisplay.innerHTML =
+          "The CSS URL would be updated each time you modify the CSS in the editor.<br/>" +
+          'It can be copy and pasted into the "themeSrc" property of the JSON config.<br/>' +
+          "NOTE: It needs to be manually copied and pasted.<br/>" +
+          "Current CSS URL:" +
+          `<b>${generateBlobUrlFromText(cssEditor.value)}</b>`;
+      }
+
+      const viewer = document.querySelector("iframe");
+      const cssUrlDisplay = document.querySelector("#css-url-display");
+      const jsonEditor = document.querySelector(
+        'hey-monaco-editor[language="json"]'
+      );
+      const cssEditor = document.querySelector(
+        'hey-monaco-editor[language="css"]'
+      );
+      jsonEditor.addEventListener("didChangeModelContent", () => {
+        updateJSONConfig();
+      });
+      cssEditor.addEventListener("didChangeModelContent", () => {
+        updateCSSTheme();
+      });
+
+      async function loadDefaultEditorValues() {
+        jsonEditor.value = await fetch(
+          new URL("./config.json", document.baseURI)
+        ).then((response) => response.text());
+        cssEditor.value = await fetch(
+          new URL("./theme.css", document.baseURI)
+        ).then((response) => response.text());
+        updateJSONConfig();
+        updateCSSTheme();
+      }
+      loadDefaultEditorValues();
+    </script>
+  </body>
+</html>
