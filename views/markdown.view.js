@@ -16,12 +16,11 @@ export default class Markdown extends HTMLElement {
       (this.src && (await fetch(this.src).then((response) => response.text())));
     this.shadowRoot.innerHTML = content
       ? /* html */ `
-      <iframe width="100%" height="100%" frameborder="0" srcdoc="${this.#encodeHTML(
-        marked(content)
-      )}"></iframe>
+      ${marked(content)}
       <style>
         :host {
           display: block;
+          padding: 0.5em;
         }
       </style>
     `
